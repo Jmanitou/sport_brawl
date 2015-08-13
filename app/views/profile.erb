@@ -1,0 +1,6 @@
+<% if session[:user_id] %>
+  :first_name => params[:first_name], :last_name => params[:last_name], :age => params[:age], :gender => params[:gender], :email => params[:email], :profile_pic => params[:profile_pic], :username => params[:username]
+
+<p><strong><%= @user.first_name %>  <%= @user.last_name %>:</strong> <%= @user.age %>, <%= @user.email %>, <%= @user.email %>, <%= @user.username%>, <%= @user.profile_pic %> people</p
+
+<%end%>

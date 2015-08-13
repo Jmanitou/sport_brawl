@@ -1,0 +1,46 @@
+body  {
+  background-color: #3B5323;
+  margin: auto;
+  background-image: url("https://whoufm.com/wp-content/uploads/2014/09/SoccerBall-351x185.jpg");
+  size: 100%;
+  max-height: auto;
+  max-width: auto%;
+}
+
+#bobert, #joe, #bob  {
+  background-color: #32CD32;
+  margin: auto;
+  border: 50px grey;
+  border-style: solid;
+  border-color: black;
+}
+
+#column  {
+  height: 1800px;
+  width: 70%;
+  margin-left: 300px;
+  margin-right: 300px;
+  background-color: green;
+  font-size:;
+  
+}
+
+#headl  {
+  font-size: 50px;
+  text-decoration: underline;
+}
+
+#stuff  {
+  font-size: 30px;
+  
+}
+
+#sidebar  {
+  width: 300px;
+    padding: 25px;
+    border: 25px solid navy;
+    margin: 25px;
+  
+  
+  
+}
