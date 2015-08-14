@@ -37,9 +37,9 @@ class ApplicationController < Sinatra::Base
   end
   
   post '/event' do
+    date = "#{params[:DOBMonth]} #{params[:DOBDay]} #{params[:DOBHour]}:#{params[:DOBMinute]} #{params[:DOBAMPM]}"
     
-    
-    Event.create(:user_id => params[:user_id], :event => params[:event], :date => params[:date], :skill_level => params[:skill_level], :location => params[:location], :gender => params[:gender], :number_of_people => params[:number_of_people], :sport => params[:sport], :event_description => params[:event_description], :event_image => params[:event_image])
+Event.create(:user_id => params[:user_id], :event => params[:event], :date => date, :skill_level => params[:skill_level], :location => params[:location], :gender => params[:gender], :number_of_people => params[:number_of_people], :sport => params[:sport], :event_description => params[:event_description], :event_image => params[:event_image])
     redirect '/'
   end
   

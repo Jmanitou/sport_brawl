@@ -1,5 +1,14 @@
 <% if session[:user_id] %>
-  <h2>Add an Event </h2>
+  
+
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h2>Create an Event </h2>
+      <hr class="star-primary">
+    </div>
+  </div>
+
+
   <form action="/event" method="POST">
   <p><strong>User:</strong> <%= @user.first_name %> <input type="hidden" name="user_id" value="<%= @user.id %>"></p>
   <p><strong>Name of event:</strong> <input type="text" name="event"></p>
@@ -133,7 +142,7 @@
   <option value="60">60</option>
 </select> 
     
-   <select name="DOBAM/PM">
+   <select name="DOBAMPM">
 	<option> - AM/PM - </option>
 	<option value="AM">AM</option>
 	<option value="PM">PM</option>
@@ -141,30 +150,30 @@
     </p>
   <p><strong>Location: </strong> <input type="text" name="location"></p>
   <p><strong>Skill Level:</strong> <select name="skill_level">
-    <option value="never_played">Never Played</option>
-    <option value="beginner">Beginner</option>
-    <option value="intermediate">Intermediate</option>
-    <option value="pro">Pro</option>
+    <option value="Never Played">Never Played</option>
+    <option value="Beginner">Beginner</option>
+    <option value="Intermediate">Intermediate</option>
+    <option value="Pro">Pro</option>
   </select> </p>
   <p><strong>Gender:</strong> <select name="gender">
-    <option value="male">Male</option>
-    <option value="female">Female</option>
-    <option value="mixed">Mixed</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Mixed">Mixed</option>
   </select> </p>
   <p><strong>Number of People:</strong> <input type="text" name="number_of_people"></p>
   <p><strong>Sport:</strong> <select name="sport">
-    <option value="basketball">Basketball</option>
-    <option value="soccer">Soccer</option>
-    <option value="baseball">Baseball</option>
-    <option value="volleyball">Volleyball</option>
-    <option value="tennis">Tennis</option>
-    <option value="golf">Golf</option>
-    <option value="bowling">Bowling</option>
-    <option value="running">Running</option>
+    <option value="Basketball">Basketball</option>
+    <option value="Boccer">Soccer</option>
+    <option value="Baseball">Baseball</option>
+    <option value="Volleyball">Volleyball</option>
+    <option value="Tennis">Tennis</option>
+    <option value="Golf">Golf</option>
+    <option value="Bowling">Bowling</option>
+    <option value="Running">Running</option>
   </select> </p>      
   <p><strong>Event Description:</strong> <input type="text" name="event_description"></p>  
   <p><strong>Event Image(URL):</strong> <input type="text" name="event_image"></p>   
     
-    <input class="btn btn-primary" type="submit">
+    <input class="btn btn-primary" type="submit" value="Create Event">
   </form>
 <% end %>

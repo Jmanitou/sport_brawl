@@ -48,25 +48,38 @@
                             <img src = '<%=event.event_image%>' class="img-responsive img-centered" alt="none">
                           
                           <p><%=event.event_description%></p>
-                            <ul class="list-inline item-details">
+                           <ul class="list-inline item-details">
                                 <li>Host:
-                                    <strong><a href="http://startbootstrap.com"> <%=event.user.first_name%></a>
+                                    <strong><a href="#"> <%=event.user.first_name%></a>
                                     </strong>
                                 </li>
                                 <li>Date:
-                                    <strong><a href="http://startbootstrap.com"><%= event.date %></a>
+                                    <strong><a href="#"><%= event.date %></a>
                                     </strong>
                                 </li>
                                 <li>Location:
-                                    <strong><a href="http://startbootstrap.com"><%= event.location %></a>
+                                    <strong><a href="/map"><%= event.location %></a>
                                     </strong>
                                 </li>
-                              <li>Delete Event:
-                                <strong><a href="http://startbootstrap.com"></a>
+                                <li>Sport:
+                                  <strong><a href="#"><%= event.sport%></a>
                                     </strong>
-                              </li>
+                                </li>
+                                <li>Skill Level:
+                                  <strong><a href="#"><%= event.skill_level%></a>
+                                    </strong>
+                                </li>
+                                <li>Number of Players:
+                                  <strong><a href="#"><%= event.number_of_people%></a>
+                                    </strong>
+                                </li>
                               
-                            </ul>
+                              
+                                <li>Members:
+                                    <strong><a href="#"><%= event%></a>
+                                    </strong>
+                                </li>
+                          </ul>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>

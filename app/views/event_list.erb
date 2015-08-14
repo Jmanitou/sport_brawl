@@ -6,6 +6,11 @@
     </div>
 </div>
 
+
+
+
+
+
 <div class="row">
   <%count = 1 %>
   <% @events.each do |event| %>
@@ -13,11 +18,13 @@
                     <a href="#portfolioModal<%=count%>" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-search-plus fa-3x">  </i>                              
+                                <%= event.sport%>, <%= event.skill_level%>
+                              
                             </div>
                         </div>
-                      <img src='<%=event.event_image%>' class= "img-responsive" alt="">
-                    </a>
+                      <img src='<%=event.event_image%>' class= "img-responsive" alt="No Image">
+ O                   </a>
                 </div>  
   
   
@@ -42,39 +49,44 @@
                           <p><%=event.event_description%></p>
                             <ul class="list-inline item-details">
                                 <li>Host:
-                                    <strong><a href="http://startbootstrap.com"> <%=event.user.first_name%></a>
+                                    <strong><a href="#"> <%=event.user.first_name%></a>
                                     </strong>
                                 </li>
                                 <li>Date:
-                                    <strong><a href="http://startbootstrap.com"><%= event.date %></a>
+                                    <strong><a href="#"><%= event.date %></a>
                                     </strong>
                                 </li>
                                 <li>Location:
                                     <strong><a href="/map"><%= event.location %></a>
                                     </strong>
                                 </li>
+                                <li>Sport:
+                                  <strong><a href="#"><%= event.sport%></a>
+                                    </strong>
+                                </li>
                                 <li>Skill Level:
-                                  <strong><a href="http://startbootstrap.com"><%= event.skill_level%></a>
+                                  <strong><a href="#"><%= event.skill_level%></a>
                                     </strong>
                                 </li>
                                 <li>Number of Players:
-                                  <strong><a href="http://startbootstrap.com"><%= event.number_of_people%></a>
+                                  <strong><a href="#"><%= event.number_of_people%></a>
                                     </strong>
                                 </li>
                               
                               
                                 <li>Members:
-                                    <strong><a href="http://startbootstrap.com"><%= event%></a>
+                                    <strong><a href="#"><%= event%></a>
                                     </strong>
-                                </li>
+                                </li>                                                              
                               
-                                <form action="/subscribe" method="POST">
+                            </ul>
+                          <form action="/subscribe" method="POST">
                                  <input type="hidden" name="user_id" value="<%= @user.id %>">
                                  <input type="hidden" name="event_id" value="<%=event.id %>">
                                  <input class="btn btn-primary" type="submit" value="Join Event">
-                                </form>  
-                              
-                            </ul>
+                           </form>
+                          <br>
+                          <br>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
