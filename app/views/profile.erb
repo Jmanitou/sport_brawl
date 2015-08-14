@@ -1,6 +1,86 @@
 <% if session[:user_id] %>
-  :first_name => params[:first_name], :last_name => params[:last_name], :age => params[:age], :gender => params[:gender], :email => params[:email], :profile_pic => params[:profile_pic], :username => params[:username]
 
-<p><strong><%= @user.first_name %>  <%= @user.last_name %>:</strong> <%= @user.age %>, <%= @user.email %>, <%= @user.email %>, <%= @user.username%>, <%= @user.profile_pic %> people</p
+  <img src='<%= @user.profile_pic %>' alt='No Profile Image' height="150px" width="125px">
+  <p><strong>NAME:</strong>   <%= @user.first_name %> <%= @user.last_name %></p>
+  <p><strong>USERNAME:</strong>   <%= @user.username %></p>
+  <p><strong>EMAIL:</strong>   <%= @user.email %></p>
+  <p><strong>AGE:</strong>   <%= @user.age %></p>
+
+
+<div class="row">
+    <div class="col-lg-12 text-center">
+       <h2>My Events</h2>
+       <hr class="star-primary">
+    </div>
+</div>
+
+<div class="row">
+  <%count = 1 %>
+  <% @user.events.each do |event| %>
+              <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal<%=count%>" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                      <img src= "<%=event.event_image%>" class="img-responsive" alt="">
+                    </a>
+                </div>  
+  
+  
+  <!-- Portfolio Modal -->
+  
+    <div class="portfolio-modal modal fade" id="portfolioModal<%=count%>" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2><%= event.event %></h2>
+                            <hr class="star-primary">
+                            <img src = '<%=event.event_image%>' class="img-responsive img-centered" alt="none">
+                          
+                          <p><%=event.event_description%></p>
+                            <ul class="list-inline item-details">
+                                <li>Host:
+                                    <strong><a href="http://startbootstrap.com"> <%=event.user.first_name%></a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com"><%= event.date %></a>
+                                    </strong>
+                                </li>
+                                <li>Location:
+                                    <strong><a href="http://startbootstrap.com"><%= event.location %></a>
+                                    </strong>
+                                </li>
+                              <li>Delete Event:
+                                <strong><a href="http://startbootstrap.com"></a>
+                                    </strong>
+                              </li>
+                              
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <% count += 1 %>
+  <% end %>
+  <% count = 1 %>
+</div>
+
+
+
+
 
 <%end%>

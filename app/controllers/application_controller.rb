@@ -37,7 +37,9 @@ class ApplicationController < Sinatra::Base
   end
   
   post '/event' do
-    Event.create(:user_id => params[:user_id], :event => params[:event], :date => params[:date], :skill_level => params[:skill_level], :location => params[:location], :gender => params[:gender], :number_of_people => params[:number_of_people], :sport => params[:sport])
+    
+    
+    Event.create(:user_id => params[:user_id], :event => params[:event], :date => params[:date], :skill_level => params[:skill_level], :location => params[:location], :gender => params[:gender], :number_of_people => params[:number_of_people], :sport => params[:sport], :event_description => params[:event_description], :event_image => params[:event_image])
     redirect '/'
   end
   
@@ -45,6 +47,13 @@ class ApplicationController < Sinatra::Base
     @events = Event.all
     @user = User.find_by(:id => session[:user_id])
     erb :event_list
+  end
+  
+  post '/subscribe' do
+    @user = User.find_by(:id => session[:user_id])
+    #Subscription.create(:user_id => params[:user_id], :event_id => params[:event_id])
+        
+    redirect '/event'
   end
   
   get '/profile' do
@@ -58,7 +67,7 @@ class ApplicationController < Sinatra::Base
   end
   
   post '/sign-up' do    
-    @user = User.new(:first_name => params[:first_name], :last_name => params[:last_name], :age => params[:age], :gender => params[:gender], :email => params[:email], :profile_pic => params[:profile_pic], :username => params[:username])
+    @user = User.new(:first_name => params[:first_name], :last_name => params[:last_name], :age => params[:age], :gender => params[:gender], :email => params[:email], :profile_pic => params[:profile_pic], :username => params[:username], :profile_pic => params[:profile_pic])
     @user.save
     session[:user_id] = @user.id
     redirect '/'
@@ -69,10 +78,20 @@ class ApplicationController < Sinatra::Base
     erb :signin
   end
   
+  get '/map' do
+    @user = User.find_by(:id => session[:user_id])
+    erb :map
+  end
+  
   post '/sign-in' do
     @user = User.find_by(:username => params[:username], :email => params[:email])
+    
+    puts params[:username]
+    puts params[:email]
+    
     if @user
       session[:user_id] = @user.id
+      puts @user.id
     end
     redirect '/profile'
   end

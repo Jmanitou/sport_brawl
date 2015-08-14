@@ -1,6 +1,93 @@
-<h2>Events!</h2>
-<% @events.each do |event| %>
-<p><strong><%= event.user.first_name %>:</strong> <%= event.event %>, <%= event.sport %>, <%= event.date %>, <%= event.skill_level %>, <%= event.gender%>, <%= event.number_of_people %> people</p>
+  
+<div class="row">
+    <div class="col-lg-12 text-center">
+       <h2>Events</h2>
+       <hr class="star-primary">
+    </div>
+</div>
 
+<div class="row">
+  <%count = 1 %>
+  <% @events.each do |event| %>
+              <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal<%=count%>" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                      <img src='<%=event.event_image%>' class= "img-responsive" alt="">
+                    </a>
+                </div>  
+  
+  
+  <!-- Portfolio Modal -->
+  
+    <div class="portfolio-modal modal fade" id="portfolioModal<%=count%>" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2><%= event.event %></h2>
+                            <hr class="star-primary">
+                            <img src='<%=event.event_image%>' class="img-responsive img-centered" alt="">
+                          
+                          <p><%=event.event_description%></p>
+                            <ul class="list-inline item-details">
+                                <li>Host:
+                                    <strong><a href="http://startbootstrap.com"> <%=event.user.first_name%></a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com"><%= event.date %></a>
+                                    </strong>
+                                </li>
+                                <li>Location:
+                                    <strong><a href="/map"><%= event.location %></a>
+                                    </strong>
+                                </li>
+                                <li>Skill Level:
+                                  <strong><a href="http://startbootstrap.com"><%= event.skill_level%></a>
+                                    </strong>
+                                </li>
+                                <li>Number of Players:
+                                  <strong><a href="http://startbootstrap.com"><%= event.number_of_people%></a>
+                                    </strong>
+                                </li>
+                              
+                              
+                                <li>Members:
+                                    <strong><a href="http://startbootstrap.com"><%= event%></a>
+                                    </strong>
+                                </li>
+                              
+                                <form action="/subscribe" method="POST">
+                                 <input type="hidden" name="user_id" value="<%= @user.id %>">
+                                 <input type="hidden" name="event_id" value="<%=event.id %>">
+                                 <input class="btn btn-primary" type="submit" value="Join Event">
+                                </form>  
+                              
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <% count += 1 %>
+  <% end %>
+  <% count = 1 %>
+</div>
+           
 
-<% end %>
+            
+                              
+            
